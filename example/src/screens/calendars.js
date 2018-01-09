@@ -23,6 +23,12 @@ export default class CalendarsScreen extends Component {
           style={styles.calendar}
           hideExtraDays
           markedDates={{[this.state.selected]: {selected: true}}}
+          theme={{
+            arrowColor: 'red',
+            todayTextColor: 'red',
+          }}
+          monthFormat={'MMMM'}
+          hideArrows={true}
         />
         <Text style={styles.text}>Calendar with marked dates and hidden arrows</Text>
         <Calendar
