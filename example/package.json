@@ -9,7 +9,7 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.47.2",
-		"react-native-calendars": "^1.5.8",
+		"react-native-calendars": "git+https://github.com/dinatazy/react-native-calendars.git",
 		"react-native-navigation": "^1.1.205"
 	},
 	"devDependencies": {

@@ -32,7 +32,8 @@ export default function getStyle(theme = {}) {
         android: {
           tintColor: appStyle.arrowColor
         }
-      })
+      }),
+      height:15,
     },
     ...(theme[STYLESHEET_ID] || {})
   });
