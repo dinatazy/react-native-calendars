@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -60,7 +60,7 @@ class Day extends Component {
 
   render() {
     const containerStyle = [this.style.base];
-    const textStyle = [this.style.text];
+    let textStyle = [this.style.text];
     const dotStyle = [this.style.dot];
 
     let marking = this.props.marking || {};
@@ -70,12 +70,15 @@ class Day extends Component {
       };
     }
     let dot;
+    if (marking.textColor) {
+        textStyle.push({ color: marking.textColor })
+    }
     if (marking.marked) {
       dotStyle.push(this.style.visibleDot);
       if (marking.dotColor) {
-        dotStyle.push({backgroundColor: marking.dotColor});
+        dotStyle.push({ backgroundColor: marking.dotColor });
       }
-      dot = (<View style={dotStyle}/>);
+      dot = (<View style={dotStyle} />);
     }
 
     if (marking.selected) {

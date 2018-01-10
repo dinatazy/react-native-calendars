@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -65,8 +65,8 @@ class Day extends Component {
       const validDots = marking.dots.filter(d => (d && d.key && d.color));
       return validDots.map(dot => {
         return (
-          <View key={dot.key} style={[baseDotStyle, 
-            { backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color}]}/>
+          <View key={dot.key} style={[baseDotStyle,
+            { backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color }]} />
         );
       });
     }
@@ -88,10 +88,14 @@ class Day extends Component {
     } else if (this.props.state === 'today') {
       textStyle.push(this.style.todayText);
     }
+
+    if (marking.textColor) {
+      textStyle.push({ color: marking.textColor })
+    }
     return (
       <TouchableOpacity style={containerStyle} onPress={this.onDayPress}>
         <Text style={textStyle}>{String(this.props.children)}</Text>
-        <View style={{flexDirection: 'row'}}>{dot}</View>
+        <View style={{ flexDirection: 'row' }}>{dot}</View>
       </TouchableOpacity>
     );
   }
