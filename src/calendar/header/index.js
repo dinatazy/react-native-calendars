@@ -47,6 +47,10 @@ class CalendarHeader extends Component {
     return false;
   }
 
+  toggleCalendar(){
+    
+  }
+
   render() {
     let weekDaysNames = weekDayNames(this.props.firstDay);
     let indicator;
@@ -56,12 +60,16 @@ class CalendarHeader extends Component {
     return (
       <View>
         <View style={this.style.header}>
-          <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity 
+            style={{ flexDirection: 'row', alignItems:'center'}}
+            onPress={()=>this.toggleCalendar()}
+          >
             <Text style={this.style.monthText}>
               {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
             </Text>
+            <Image style={{width:20, height:20}} source={require('../img/arrowDown.png')} />
             {indicator}
-          </View>
+          </TouchableOpacity>
         </View>
         {
           !this.props.hideDayNames &&
