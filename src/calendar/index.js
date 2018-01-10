@@ -246,8 +246,8 @@ class Calendar extends Component {
         indicator = true;
       }
     }
-    let leftArrow = <View />;
-    let rightArrow = <View />;
+    let leftArrow = <View style={this.style.arrow} />;
+    let rightArrow = <View style={this.style.arrow} />;
     if (!this.props.hideArrows && isCalendarVisible) {
       leftArrow = (
         <TouchableOpacity
