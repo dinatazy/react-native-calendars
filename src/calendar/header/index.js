@@ -48,34 +48,7 @@ class CalendarHeader extends Component {
   }
 
   render() {
-    let leftArrow = <View />;
-    let rightArrow = <View />;
     let weekDaysNames = weekDayNames(this.props.firstDay);
-    if (!this.props.hideArrows) {
-      leftArrow = (
-        <TouchableOpacity
-          onPress={this.substractMonth}
-          style={this.style.arrow}
-        >
-          {this.props.renderArrow
-            ? this.props.renderArrow('left')
-            : <Image
-                source={require('../img/previous.png')}
-                style={this.style.arrowImage}
-              />}
-        </TouchableOpacity>
-      );
-      rightArrow = (
-        <TouchableOpacity onPress={this.addMonth} style={this.style.arrow}>
-          {this.props.renderArrow
-            ? this.props.renderArrow('right')
-            : <Image
-                source={require('../img/next.png')}
-                style={this.style.arrowImage}
-              />}
-        </TouchableOpacity>
-      );
-    }
     let indicator;
     if (this.props.showIndicator) {
       indicator = <ActivityIndicator />;
