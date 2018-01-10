@@ -11,7 +11,6 @@ export default function(theme={}) {
       justifyContent: 'space-between',
       paddingLeft: 10,
       paddingRight: 10,
-      alignItems: 'center'
     },
     monthText: {
       fontSize: appStyle.textMonthFontSize,

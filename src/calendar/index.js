@@ -82,7 +82,8 @@ class Calendar extends Component {
       currentMonth = XDate();
     }
     this.state = {
-      currentMonth
+      currentMonth,
+      isCalendarVisible: true,
     };
 
     this.updateMonth = this.updateMonth.bind(this);
@@ -221,10 +222,19 @@ class Calendar extends Component {
     return (<View style={this.style.week} key={id}>{week}</View>);
   }
 
+  toggleCalendar() {
+    this.setState({
+      isCalendarVisible: !this.state.isCalendarVisible
+    }, () => {
+      this.forceUpdate()
+    })
+  }
+
   render() {
+    let { isCalendarVisible } = this.state
     const days = dateutils.page(this.state.currentMonth, this.props.firstDay);
     const weeks = [];
-    while (days.length) {
+    while (days.length && isCalendarVisible) {
       weeks.push(this.renderWeek(days.splice(0, 7), weeks.length));
     }
     let indicator;
@@ -238,49 +248,53 @@ class Calendar extends Component {
     }
     let leftArrow = <View />;
     let rightArrow = <View />;
-    leftArrow = (
-      <TouchableOpacity
-        onPress={()=>this.addMonth(-1)}
-        style={this.style.arrow}
-      >
-        {this.props.renderArrow
-          ? this.props.renderArrow('left')
-          : <Image
-            source={require('./img/previous.png')}
-            style={this.style.arrowImage}
-          />}
-      </TouchableOpacity>
-    );
-    rightArrow = (
-      <TouchableOpacity onPress={()=>this.addMonth(1)} style={this.style.arrow}>
-        {this.props.renderArrow
-          ? this.props.renderArrow('right')
-          : <Image
-            source={require('./img/next.png')}
-            style={this.style.arrowImage}
-          />}
-      </TouchableOpacity>
-    );
+    if (!this.props.hideArrows && isCalendarVisible) {
+      leftArrow = (
+        <TouchableOpacity
+          onPress={() => this.addMonth(-1)}
+          style={this.style.arrow}
+        >
+          {this.props.renderArrow
+            ? this.props.renderArrow('left')
+            : <Image
+              source={require('./img/previous.png')}
+              style={this.style.arrowImage}
+            />}
+        </TouchableOpacity>
+      );
+      rightArrow = (
+        <TouchableOpacity onPress={() => this.addMonth(1)} style={this.style.arrow}>
+          {this.props.renderArrow
+            ? this.props.renderArrow('right')
+            : <Image
+              source={require('./img/next.png')}
+              style={this.style.arrowImage}
+            />}
+        </TouchableOpacity>
+      );
+    }
 
     return (
-      <View style={[this.style.container,{ alignItems:'center', flexDirection:'row'}]}>
-      {leftArrow}
-      <View style={[this.style.subContainer, this.props.style]}>
-        <CalendarHeader
-          theme={this.props.theme}
-          hideArrows={this.props.hideArrows}
-          month={this.state.currentMonth}
-          addMonth={this.addMonth}
-          showIndicator={indicator}
-          firstDay={this.props.firstDay}
-          renderArrow={this.props.renderArrow}
-          monthFormat={this.props.monthFormat}
-          hideDayNames={this.props.hideDayNames}
-          weekNumbers={this.props.showWeekNumbers}
-        />
-        {weeks}
-      </View>
-      {rightArrow}
+      <View style={[this.style.container, { alignItems: 'center', flexDirection: 'row' }]}>
+        {leftArrow}
+        <View style={[this.style.subContainer, this.props.style]}>
+          <CalendarHeader
+            theme={this.props.theme}
+            hideArrows={this.props.hideArrows}
+            month={this.state.currentMonth}
+            addMonth={this.addMonth}
+            showIndicator={indicator}
+            firstDay={this.props.firstDay}
+            renderArrow={this.props.renderArrow}
+            monthFormat={this.props.monthFormat}
+            hideDayNames={this.props.hideDayNames}
+            weekNumbers={this.props.showWeekNumbers}
+            isCalendarVisible={isCalendarVisible}
+            toggleCalendar={this.toggleCalendar.bind(this)}
+          />
+          {weeks}
+        </View>
+        {rightArrow}
       </View>
 
     );

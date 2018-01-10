@@ -44,15 +44,18 @@ class CalendarHeader extends Component {
     if (nextProps.showIndicator !== this.props.showIndicator) {
       return true;
     }
+    if (nextProps.isCalendarVisible !== this.props.isCalendarVisible) {
+      return true;
+    }
     return false;
   }
 
-  toggleCalendar(){
-    
-  }
-
   render() {
-    let weekDaysNames = weekDayNames(this.props.firstDay);
+    console.log('my week days', this.props.isCalendarVisible)
+    let weekDaysNames = []
+    if (this.props.isCalendarVisible) {
+      weekDaysNames = weekDayNames(this.props.firstDay);
+    }
     let indicator;
     if (this.props.showIndicator) {
       indicator = <ActivityIndicator />;
@@ -60,14 +63,14 @@ class CalendarHeader extends Component {
     return (
       <View>
         <View style={this.style.header}>
-          <TouchableOpacity 
-            style={{ flexDirection: 'row', alignItems:'center'}}
-            onPress={()=>this.toggleCalendar()}
+          <TouchableOpacity
+            style={{ flexDirection: 'row', alignItems: 'center' }}
+            onPress={() => this.props.toggleCalendar()}
           >
             <Text style={this.style.monthText}>
               {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
             </Text>
-            <Image style={{width:20, height:20}} source={require('../img/arrowDown.png')} />
+            <Image style={{ width: 20, height: 20 }} source={require('../img/arrowDown.png')} />
             {indicator}
           </TouchableOpacity>
         </View>

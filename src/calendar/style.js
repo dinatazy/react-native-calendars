@@ -13,7 +13,6 @@ export default function getStyle(theme = {}) {
       flex: 1,
       paddingLeft: 10,
       paddingRight: 10,
-      justifyContent: 'center',
     },
     week: {
       marginTop: 7,
