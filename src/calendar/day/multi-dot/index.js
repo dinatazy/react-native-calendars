@@ -87,6 +87,7 @@ class Day extends Component {
       textStyle.push(this.style.disabledText);
     } else if (this.props.state === 'today') {
       textStyle.push(this.style.todayText);
+      containerStyle.push(this.style.todayContainer);
     }
 
     if (marking.textColor) {

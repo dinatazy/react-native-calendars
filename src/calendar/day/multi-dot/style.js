@@ -26,6 +26,10 @@ export default function styleConstructor(theme={}) {
       backgroundColor: appStyle.selectedDayBackgroundColor,
       borderRadius: 16
     },
+    todayContainer:{
+      backgroundColor:'#D3D3D3',
+      borderRadius:2,
+    },
     todayText: {
       color: appStyle.todayTextColor
     },

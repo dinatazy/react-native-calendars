@@ -34,15 +34,14 @@ export default class CalendarsScreen extends Component {
           markedDates={{[this.state.selected]: {selected: true}}}
           theme={{
             arrowColor: 'red',
-            todayTextColor: 'red',
+            todayTextColor: 'black',
           }}
           monthFormat={'MMMM'}
           hideArrows={false}
           hideExtraDays={false}
           markedDates={{
             '2018-01-23': {selected: true, marked: true},
-            '2018-01-15': { color: 'red', textColor: 'green'},
-            '2018-01-25': {marked: true, dotColor: 'red'},
+            '2018-01-15': { color: 'red', textColor: 'red'},
             '2018-01-26': {marked: true},
           }}
           markingType={'multi-dot'}

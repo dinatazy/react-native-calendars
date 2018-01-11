@@ -43,6 +43,10 @@ export default function styleConstructor(theme={}) {
       color: appStyle.dayTextColor || '#2d4150',
       backgroundColor: 'rgba(255, 255, 255, 0)'
     },
+    todayContainer:{
+      backgroundColor:'#D3D3D3',
+      borderRadius:2,
+    },
     todayText: {
       fontWeight: '500',
       color: theme.todayTextColor || appStyle.dayTextColor,
