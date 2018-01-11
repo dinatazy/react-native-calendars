@@ -4,6 +4,7 @@ import {
   ViewPropTypes,
   TouchableOpacity,
   Image,
+  Text
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -16,6 +17,7 @@ import UnitDay from './day/period';
 import MultiDotDay from './day/multi-dot';
 import CalendarHeader from './header';
 import shouldComponentUpdate from './updater';
+import { weekDayNames } from '../dateutils';
 
 //Fallback when RN version is < 0.44
 const viewPropTypes = ViewPropTypes || View.propTypes;
@@ -232,6 +234,10 @@ class Calendar extends Component {
 
   render() {
     let { isCalendarVisible } = this.state
+    let weekDaysNames = []
+    if (isCalendarVisible) {
+      weekDaysNames = weekDayNames(this.props.firstDay);
+    }
     const days = dateutils.page(this.state.currentMonth, this.props.firstDay);
     const weeks = [];
     while (days.length && isCalendarVisible) {
@@ -275,26 +281,37 @@ class Calendar extends Component {
     }
 
     return (
-      <View style={[this.style.container, { alignItems: 'center', flexDirection: 'row' }]}>
-        {leftArrow}
-        <View style={[this.style.subContainer, this.props.style]}>
-          <CalendarHeader
-            theme={this.props.theme}
-            hideArrows={this.props.hideArrows}
-            month={this.state.currentMonth}
-            addMonth={this.addMonth}
-            showIndicator={indicator}
-            firstDay={this.props.firstDay}
-            renderArrow={this.props.renderArrow}
-            monthFormat={this.props.monthFormat}
-            hideDayNames={this.props.hideDayNames}
-            weekNumbers={this.props.showWeekNumbers}
-            isCalendarVisible={isCalendarVisible}
-            toggleCalendar={this.toggleCalendar.bind(this)}
-          />
-          {weeks}
+      <View style={[this.style.container]}>
+        <CalendarHeader
+          theme={this.props.theme}
+          hideArrows={this.props.hideArrows}
+          month={this.state.currentMonth}
+          addMonth={this.addMonth}
+          showIndicator={indicator}
+          firstDay={this.props.firstDay}
+          renderArrow={this.props.renderArrow}
+          monthFormat={this.props.monthFormat}
+          hideDayNames={this.props.hideDayNames}
+          weekNumbers={this.props.showWeekNumbers}
+          isCalendarVisible={isCalendarVisible}
+          toggleCalendar={this.toggleCalendar.bind(this)}
+        />
+        <View style={{ flexDirection: 'row', alignItems:'center' }}>
+          {leftArrow}
+          <View style={[this.style.subContainer]}>
+            {
+              !this.props.hideDayNames &&
+              <View style={this.style.week}>
+                {this.props.showWeekNumbers && <Text style={this.style.dayHeader}></Text>}
+                {weekDaysNames.map((day, idx) => (
+                  <Text key={idx} style={this.style.dayHeader} numberOfLines={1}>{day}</Text>
+                ))}
+              </View>
+            }
+            {weeks}
+          </View>
+          {rightArrow}
         </View>
-        {rightArrow}
       </View>
 
     );

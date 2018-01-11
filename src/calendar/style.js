@@ -34,6 +34,21 @@ export default function getStyle(theme = {}) {
       }),
       height:15,
     },
+    week: {
+      //marginTop: 7,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      margin:7
+    },
+    dayHeader: {
+      marginTop: 2,
+      marginBottom: 7,
+      width: 32,
+      textAlign: 'center',
+      fontSize: appStyle.textDayHeaderFontSize,
+      fontFamily: appStyle.textDayHeaderFontFamily,
+      color: appStyle.textSectionTitleColor
+    },
     ...(theme[STYLESHEET_ID] || {})
   });
 }

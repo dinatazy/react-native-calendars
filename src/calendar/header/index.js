@@ -74,15 +74,6 @@ class CalendarHeader extends Component {
             {indicator}
           </TouchableOpacity>
         </View>
-        {
-          !this.props.hideDayNames &&
-          <View style={this.style.week}>
-            {this.props.weekNumbers && <Text style={this.style.dayHeader}></Text>}
-            {weekDaysNames.map((day, idx) => (
-              <Text key={idx} style={this.style.dayHeader} numberOfLines={1}>{day}</Text>
-            ))}
-          </View>
-        }
       </View>
     );
   }
