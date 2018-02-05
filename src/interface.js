@@ -18,6 +18,13 @@ function xdateToData(xdate) {
   };
 }
 
+function xdateToYearAndMonth(xdate) {
+  return {
+    year: xdate.toString('yyyy'),
+    month: xdate.toString('MMMM')
+  };
+}
+
 function parseDate(d) {
   if (!d) {
     return;
@@ -38,6 +45,7 @@ function parseDate(d) {
 
 module.exports = {
   xdateToData,
+  xdateToYearAndMonth,
   parseDate
 };
 

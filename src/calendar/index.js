@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 import XDate from 'xdate';
 import dateutils from '../dateutils';
-import { xdateToData, parseDate } from '../interface';
+import { xdateToData, parseDate, xdateToYearAndMonth } from '../interface';
 import styleConstructor from './style';
 import Day from './day/basic';
 import UnitDay from './day/period';
@@ -58,6 +58,7 @@ class Calendar extends Component {
     // Handler which gets executed when visible month changes in calendar. Default = undefined
     onMonthChange: PropTypes.func,
     onVisibleMonthsChange: PropTypes.func,
+    getCurrentDate: PropTypes.func,
     // Replace default arrows with custom ones (direction can be 'left' or 'right')
     renderArrow: PropTypes.func,
     // Provide custom day rendering component
@@ -89,9 +90,14 @@ class Calendar extends Component {
     };
 
     this.updateMonth = this.updateMonth.bind(this);
+    this.getCurrentDate = this.getCurrentDate.bind(this);
     this.addMonth = this.addMonth.bind(this);
     this.pressDay = this.pressDay.bind(this);
     this.shouldComponentUpdate = shouldComponentUpdate;
+  }
+
+  componentDidMount() {
+    this.getCurrentDate();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -110,6 +116,7 @@ class Calendar extends Component {
     this.setState({
       currentMonth: day.clone()
     }, () => {
+      this.getCurrentDate();
       if (!doNotTriggerListeners) {
         const currMont = this.state.currentMonth.clone();
         if (this.props.onMonthChange) {
@@ -232,6 +239,10 @@ class Calendar extends Component {
     })
   }
 
+  getCurrentDate() {
+    this.props.getCurrentDate(xdateToYearAndMonth(this.state.currentMonth));
+  }
+
   render() {
     let { isCalendarVisible } = this.state
     let weekDaysNames = []
@@ -296,7 +307,7 @@ class Calendar extends Component {
           isCalendarVisible={isCalendarVisible}
           toggleCalendar={this.toggleCalendar.bind(this)}
         />
-        <View style={{ flexDirection: 'row', alignItems:'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {leftArrow}
           <View style={[this.style.subContainer]}>
             {
