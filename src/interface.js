@@ -21,7 +21,8 @@ function xdateToData(xdate) {
 function xdateToYearAndMonth(xdate) {
   return {
     year: xdate.toString('yyyy'),
-    month: xdate.toString('MMMM')
+    month: xdate.toString('MMMM'),
+    monthNumber: xdate.toString('M')
   };
 }
 
