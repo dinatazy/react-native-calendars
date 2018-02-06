@@ -44,7 +44,7 @@ export default function styleConstructor(theme={}) {
       backgroundColor: 'rgba(255, 255, 255, 0)'
     },
     todayContainer:{
-      backgroundColor:'#D3D3D3',
+      backgroundColor:'#0078A8',
       borderRadius:2,
     },
     todayText: {

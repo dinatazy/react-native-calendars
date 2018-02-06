@@ -27,7 +27,7 @@ export default function styleConstructor(theme={}) {
       borderRadius: 16
     },
     todayContainer:{
-      backgroundColor:'#D3D3D3',
+      backgroundColor:'#0078A8',
       borderRadius:2,
     },
     todayText: {
