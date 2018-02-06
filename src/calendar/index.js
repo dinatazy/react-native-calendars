@@ -55,6 +55,7 @@ class Calendar extends Component {
 
     // Handler which gets executed on day press. Default = undefined
     onDayPress: PropTypes.func,
+    swipeMonthSlider: PropTypes.func,
     // Handler which gets executed when visible month changes in calendar. Default = undefined
     onMonthChange: PropTypes.func,
     onVisibleMonthsChange: PropTypes.func,
@@ -146,6 +147,13 @@ class Calendar extends Component {
 
   addMonth(count) {
     this.updateMonth(this.state.currentMonth.clone().addMonths(count, true));
+  }
+
+  addMonthAndCallSwiper(count){
+    this.addMonth(count);
+    if (this.props.swipeMonthSlider) {
+      this.props.swipeMonthSlider(count);
+    }
   }
 
   renderDay(day, id) {
@@ -268,7 +276,7 @@ class Calendar extends Component {
     if (!this.props.hideArrows && isCalendarVisible) {
       leftArrow = (
         <TouchableOpacity
-          onPress={() => this.addMonth(-1)}
+          onPress={() => this.addMonthAndCallSwiper(-1)}
           style={this.style.arrow}
         >
           {this.props.renderArrow
@@ -280,7 +288,7 @@ class Calendar extends Component {
         </TouchableOpacity>
       );
       rightArrow = (
-        <TouchableOpacity onPress={() => this.addMonth(1)} style={this.style.arrow}>
+        <TouchableOpacity onPress={() => this.addMonthAndCallSwiper(1)} style={this.style.arrow}>
           {this.props.renderArrow
             ? this.props.renderArrow('right')
             : <Image
