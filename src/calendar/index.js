@@ -87,7 +87,7 @@ class Calendar extends Component {
     }
     this.state = {
       currentMonth,
-      isCalendarVisible: true,
+      isCalendarVisible: false,
     };
 
     this.updateMonth = this.updateMonth.bind(this);
