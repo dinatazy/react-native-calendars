@@ -149,7 +149,7 @@ class Calendar extends Component {
     this.updateMonth(this.state.currentMonth.clone().addMonths(count, true));
   }
 
-  addMonthAndCallSwiper(count){
+  addMonthAndCallSwiper(count) {
     this.addMonth(count);
     if (this.props.swipeMonthSlider) {
       this.props.swipeMonthSlider(count);
@@ -301,20 +301,22 @@ class Calendar extends Component {
 
     return (
       <View style={[this.style.container]}>
-        <CalendarHeader
-          theme={this.props.theme}
-          hideArrows={this.props.hideArrows}
-          month={this.state.currentMonth}
-          addMonth={this.addMonth}
-          showIndicator={indicator}
-          firstDay={this.props.firstDay}
-          renderArrow={this.props.renderArrow}
-          monthFormat={this.props.monthFormat}
-          hideDayNames={this.props.hideDayNames}
-          weekNumbers={this.props.showWeekNumbers}
-          isCalendarVisible={isCalendarVisible}
-          toggleCalendar={this.toggleCalendar.bind(this)}
-        />
+        {isCalendarVisible ?
+          <CalendarHeader
+            theme={this.props.theme}
+            hideArrows={this.props.hideArrows}
+            month={this.state.currentMonth}
+            addMonth={this.addMonth}
+            showIndicator={indicator}
+            firstDay={this.props.firstDay}
+            renderArrow={this.props.renderArrow}
+            monthFormat={this.props.monthFormat}
+            hideDayNames={this.props.hideDayNames}
+            weekNumbers={this.props.showWeekNumbers}
+            isCalendarVisible={isCalendarVisible}
+            toggleCalendar={this.toggleCalendar.bind(this)}
+          />
+          : null}
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {leftArrow}
           <View style={[this.style.subContainer]}>
