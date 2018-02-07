@@ -19,10 +19,12 @@ function xdateToData(xdate) {
 }
 
 function xdateToYearAndMonth(xdate) {
+  const dateString = xdate.toString('yyyy-MM-dd');
   return {
     year: xdate.toString('yyyy'),
     month: xdate.toString('MMMM'),
-    monthNumber: xdate.toString('M')
+    monthNumber: xdate.toString('M'),
+    dateString: dateString,
   };
 }
 
