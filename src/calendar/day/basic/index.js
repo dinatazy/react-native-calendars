@@ -73,7 +73,7 @@ class Day extends Component {
     if (marking.textColor) {
         textStyle.push({ color: marking.textColor })
     }
-    if (marking.marked) {
+    else if (marking.marked) {  //if text color is indicated no dots will show
       dotStyle.push(this.style.visibleDot);
       if (marking.dotColor) {
         dotStyle.push({ backgroundColor: marking.dotColor });
