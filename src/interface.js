@@ -12,6 +12,7 @@ function xdateToData(xdate) {
   return {
     year: xdate.getFullYear(),
     month: xdate.getMonth() + 1,
+    monthText:xdate.toString('MMMM'),
     day: xdate.getDate(),
     timestamp: XDate(dateString, true).getTime(),
     dateString: dateString

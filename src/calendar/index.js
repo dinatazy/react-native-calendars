@@ -248,7 +248,7 @@ class Calendar extends Component {
   }
 
   getCurrentDate() {
-    this.props.getCurrentDate(xdateToYearAndMonth(this.state.currentMonth));
+    this.props.getCurrentDate(xdateToData(this.state.currentMonth));
   }
 
   render() {
