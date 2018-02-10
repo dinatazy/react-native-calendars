@@ -71,13 +71,12 @@ class Day extends Component {
     }
     let dot;
     if (marking.textColor) {
-        textStyle.push({ color: marking.textColor })
+      textStyle.push({ color: marking.textColor })
     }
-    else if (marking.marked) {  //if text color is indicated no dots will show
+    if (marking.dotColor) {  //if text color is indicated no dots will show
       dotStyle.push(this.style.visibleDot);
-      if (marking.dotColor) {
-        dotStyle.push({ backgroundColor: marking.dotColor });
-      }
+      dotStyle.push({ backgroundColor: marking.dotColor });
+
       dot = (<View style={dotStyle} />);
     }
 
