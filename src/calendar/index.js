@@ -299,8 +299,13 @@ class Calendar extends Component {
       );
     }
 
+    let conatinerHeight = {};
+    if (isCalendarVisible == false) {
+      conatinerHeight = { height: 0 };
+    }
+
     return (
-      <View style={[this.style.container]}>
+      <View style={[this.style.container, conatinerHeight]}>
         {isCalendarVisible ?
           <CalendarHeader
             theme={this.props.theme}

@@ -40,8 +40,8 @@ export default function styleConstructor(theme={}) {
       color: appStyle.textDisabledColor
     },
     dot: {
-      width: 4,
-      height: 4,
+      width: 5,
+      height: 5,
       marginTop: 1,
       borderRadius: 2,
       opacity: 0
