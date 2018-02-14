@@ -40,10 +40,9 @@ export default function styleConstructor(theme={}) {
       color: appStyle.textDisabledColor
     },
     dot: {
-      width: 5,
-      height: 5,
+      width: 15,
+      height: 2,
       marginTop: 1,
-      borderRadius: 2,
       opacity: 0
     },
     visibleDot: {
