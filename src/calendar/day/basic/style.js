@@ -41,7 +41,7 @@ export default function styleConstructor(theme={}) {
     },
     dot: {
       width: 15,
-      height: 2,
+      height: 3,
       marginTop: 1,
       opacity: 0
     },

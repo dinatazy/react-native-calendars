@@ -79,6 +79,7 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.style = styleConstructor(this.props.theme);
+    this.isShiftExists = false;
     let currentMonth;
     if (props.current) {
       currentMonth = parseDate(props.current);
@@ -108,6 +109,7 @@ class Calendar extends Component {
         currentMonth: current.clone()
       });
     }
+    this.isShiftExists = false;
   }
 
   updateMonth(day, doNotTriggerListeners) {
@@ -216,6 +218,9 @@ class Calendar extends Component {
     }
     const dates = this.props.markedDates[day.toString('yyyy-MM-dd')] || EmptyArray;
     if (dates.length || dates) {
+      if (dates.dotColor) {
+        this.isShiftExists = true
+      }
       return dates;
     } else {
       return false;
@@ -338,6 +343,23 @@ class Calendar extends Component {
           </View>
           {rightArrow}
         </View>
+        {this.isShiftExists ?
+          <View style={{ flexDirection: 'row', alignItems: 'center', height: 47, borderTopWidth: 0.5, borderColor: '#c4c4c4' }}>
+            <Text style={[{ marginLeft: 5, }, this.style.shiftTypeText]}>Farbschema: </Text>
+            <View style={this.style.shiftTypeContainer}>
+              <View style={[this.style.shiftTypeColorContainer, this.style.morning]}></View>
+              <Text style={this.style.shiftTypeText}>Früh</Text>
+            </View>
+            <View style={this.style.shiftTypeContainer}>
+              <View style={[this.style.shiftTypeColorContainer, this.style.afternoon]}></View>
+              <Text style={this.style.shiftTypeText}>Mittag</Text>
+            </View>
+            <View style={this.style.shiftTypeContainer}>
+              <View style={[this.style.shiftTypeColorContainer, this.style.night]}></View>
+              <Text style={this.style.shiftTypeText}>Nacht</Text>
+            </View>
+          </View>
+          : null}
       </View>
 
     );

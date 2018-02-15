@@ -32,13 +32,13 @@ export default function getStyle(theme = {}) {
           tintColor: appStyle.arrowColor
         }
       }),
-      height:15,
+      height: 15,
     },
     week: {
       //marginTop: 7,
       flexDirection: 'row',
       justifyContent: 'space-around',
-      margin:7
+      margin: 7
     },
     dayHeader: {
       marginTop: 2,
@@ -48,6 +48,34 @@ export default function getStyle(theme = {}) {
       fontSize: appStyle.textDayHeaderFontSize,
       fontFamily: appStyle.textDayHeaderFontFamily,
       color: appStyle.textSectionTitleColor
+    },
+
+    shiftTypeContainer: {
+      flexDirection: 'row'
+    },
+    shiftTypeColorContainer: {
+      width: 15,
+      height: 15,
+      marginLeft: 10,
+      marginRight: 10
+    },
+
+    shiftTypeText: {
+      fontFamily: 'voestalpine-light',
+      color: '#4A4A4A',
+      fontSize: 14
+    },
+
+    morning: {
+      backgroundColor: '#87D25A',
+    },
+
+    afternoon: {
+      backgroundColor: '#A5A5A5',
+    },
+
+    night: {
+      backgroundColor: '#E2CF30'
     },
     ...(theme[STYLESHEET_ID] || {})
   });
