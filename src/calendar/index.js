@@ -345,7 +345,7 @@ class Calendar extends Component {
         </View>
         {this.isShiftExists ?
           <View style={{ flexDirection: 'row', alignItems: 'center', height: 47, borderTopWidth: 0.5, borderColor: '#c4c4c4' }}>
-            <Text style={[{ marginLeft: 5, }, this.style.shiftTypeText]}>Farbschema: </Text>
+            <Text style={[{ marginLeft: 5, marginRight:10 }, this.style.shiftTypeText]}>Farbschema: </Text>
             <View style={this.style.shiftTypeContainer}>
               <View style={[this.style.shiftTypeColorContainer, this.style.morning]}></View>
               <Text style={this.style.shiftTypeText}>Früh</Text>
