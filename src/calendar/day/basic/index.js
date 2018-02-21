@@ -46,7 +46,9 @@ class Day extends Component {
           this.props.marking.marked === nextProps.marking.marked
           && this.props.marking.selected === nextProps.marking.selected
           && this.props.marking.dotColor === nextProps.marking.dotColor
-          && this.props.marking.disabled === nextProps.marking.disabled));
+          && this.props.marking.disabled === nextProps.marking.disabled
+          && this.props.marking.textColor === nextProps.marking.textColor
+        ));
       } else {
         markingChanged = true;
       }
