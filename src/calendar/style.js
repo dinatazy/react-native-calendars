@@ -52,7 +52,8 @@ export default function getStyle(theme = {}) {
 
     shiftTypeContainer: {
       flexDirection: 'row',
-      alignItems: 'center'
+      alignItems: 'center',
+      width: 93,
     },
     shiftTypeColorContainer: {
       width: 15,
