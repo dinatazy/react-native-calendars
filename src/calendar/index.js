@@ -55,6 +55,7 @@ class Calendar extends Component {
 
     // Handler which gets executed on day press. Default = undefined
     onDayPress: PropTypes.func,
+    onTodayPress: PropTypes.func,
     swipeMonthSlider: PropTypes.func,
     // Handler which gets executed when visible month changes in calendar. Default = undefined
     onMonthChange: PropTypes.func,
@@ -144,6 +145,13 @@ class Calendar extends Component {
       if (this.props.onDayPress) {
         this.props.onDayPress(xdateToData(day));
       }
+    }
+  }
+
+  pressToday(date) {
+    const day = parseDate(date);
+    if (this.props.onTodayPress) {
+      this.props.onTodayPress(xdateToData(day));
     }
   }
 
@@ -325,6 +333,7 @@ class Calendar extends Component {
             weekNumbers={this.props.showWeekNumbers}
             isCalendarVisible={isCalendarVisible}
             toggleCalendar={this.toggleCalendar.bind(this)}
+            onTodayPress={this.pressToday.bind(this)}
           />
           : null}
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -344,8 +353,8 @@ class Calendar extends Component {
           {rightArrow}
         </View>
         {this.isShiftExists ?
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center', height: 47, borderTopWidth: 0.5, borderColor: '#c4c4c4' }}>
-           {/*  <Text style={[{ marginLeft: 5, marginRight:10 }, this.style.shiftTypeText]}>Farbschema: </Text> */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: 47, borderTopWidth: 0.5, borderColor: '#c4c4c4' }}>
+            {/*  <Text style={[{ marginLeft: 5, marginRight:10 }, this.style.shiftTypeText]}>Farbschema: </Text> */}
             <View style={this.style.shiftTypeContainer}>
               <View style={[this.style.shiftTypeColorContainer, this.style.morning]}></View>
               <Text style={this.style.shiftTypeText}>Früh</Text>

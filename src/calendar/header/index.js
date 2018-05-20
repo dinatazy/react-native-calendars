@@ -16,7 +16,8 @@ class CalendarHeader extends Component {
     firstDay: PropTypes.number,
     renderArrow: PropTypes.func,
     hideDayNames: PropTypes.bool,
-    weekNumbers: PropTypes.bool
+    weekNumbers: PropTypes.bool,
+    onTodayPress: PropTypes.func,
   };
 
   constructor(props) {
@@ -50,6 +51,13 @@ class CalendarHeader extends Component {
     return false;
   }
 
+  onTodayPress() {
+    if (this.props.onTodayPress) {
+      this.props.onTodayPress(XDate());
+    }
+  }
+
+
   render() {
     console.log('my week days', this.props.isCalendarVisible)
     let weekDaysNames = []
@@ -76,6 +84,12 @@ class CalendarHeader extends Component {
           <Text style={this.style.monthText}>
             {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
           </Text>
+          <TouchableOpacity
+            style={this.style.todayBtn}
+            onPress={() => { this.onTodayPress() }}
+          >
+            <Text style={this.style.todayText}>Heute</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

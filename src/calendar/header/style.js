@@ -24,6 +24,19 @@ export default function(theme={}) {
     arrow: {
       padding: 10
     },
+
+    todayBtn:{
+      justifyContent:'center',
+      alignItems:'center',
+    },
+
+    todayText:{
+      fontSize: appStyle.textMonthFontSize,
+      fontFamily: appStyle.textMonthFontFamily,
+      fontWeight: '300',
+      color: '#0078A8',
+    },
+
     arrowImage: {
       ...Platform.select({
         ios: {
