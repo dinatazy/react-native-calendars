@@ -80,7 +80,7 @@ class CalendarHeader extends Component {
           >
             <Text style={this.style.todayText}>Heute</Text>
           </TouchableOpacity>
-          <View style={{ width: 50 }}></View>
+          <View style={{ width: 100 }}></View>
         </View>
       </View>
     );

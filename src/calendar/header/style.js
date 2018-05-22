@@ -20,6 +20,7 @@ export default function (theme = {}) {
       color: appStyle.monthTextColor,
       margin: 10,
       marginRight: 5,
+      width:90,
     },
     arrow: {
       padding: 10
