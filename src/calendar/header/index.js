@@ -71,16 +71,6 @@ class CalendarHeader extends Component {
     return (
       <View>
         <View style={this.style.header}>
-          {/* <TouchableOpacity
-            style={{ flexDirection: 'row', alignItems: 'center' }}
-            onPress={() => this.props.toggleCalendar()}
-          >
-            <Text style={this.style.monthText}>
-              {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
-            </Text>
-            <Image style={{ width: 20, height: 20 }} source={require('../img/arrowDown.png')} />
-            {indicator}
-          </TouchableOpacity> */}
           <Text style={this.style.monthText}>
             {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
           </Text>
@@ -90,6 +80,7 @@ class CalendarHeader extends Component {
           >
             <Text style={this.style.todayText}>Heute</Text>
           </TouchableOpacity>
+          <View style={{ width: 50 }}></View>
         </View>
       </View>
     );
